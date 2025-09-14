@@ -2,7 +2,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.sql.*;
 
-
 public class MainApplication {
 
     private JFrame frame;
@@ -11,7 +10,7 @@ public class MainApplication {
     private DatabaseManager dbManager;
     private String loggedInUser=null;
     private OperationsPanel operationsPanel;
-
+    private  TransactionPanel transactionPanel;
     public MainApplication() {
         dbManager = new DatabaseManager();
         frame = new JFrame("奶农银行hh");
@@ -25,11 +24,15 @@ public class MainApplication {
         CreateAccountPanel createAccountPanel = new CreateAccountPanel(this);
         LoginPanel loginPanel = new LoginPanel(this);
         operationsPanel = new OperationsPanel(this);
+        transactionPanel = new TransactionPanel(this);
+        ChangePasswordPanel changePasswordPanel = new ChangePasswordPanel(this);
 
         mainPanel.add(welcomePanel,"Welcome");
         mainPanel.add(createAccountPanel,"CreateAccount");
         mainPanel.add(loginPanel,"Login");
         mainPanel.add(operationsPanel,"Operations");
+        mainPanel.add(transactionPanel,"Transactions");
+        mainPanel.add(changePasswordPanel,"ChangePassword");
 
         frame.add(mainPanel);
         frame.setLocationRelativeTo(null);
@@ -59,6 +62,10 @@ public class MainApplication {
 
     public OperationsPanel getOperationsPanel() {
         return operationsPanel;
+    }
+
+    public TransactionPanel getTransactionPanel() {
+        return transactionPanel;
     }
 }
 

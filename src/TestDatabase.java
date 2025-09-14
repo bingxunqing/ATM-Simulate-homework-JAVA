@@ -5,7 +5,7 @@ public class TestDatabase {
 
         DatabaseManager dbManager = new DatabaseManager();
 
-        String testUsername = "root";
+        String testUsername = "root2";
         String testPassword = "123";
         String wrongUsername = "wrongUsername";
         String wrongPassword = "wrongPassword";

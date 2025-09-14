@@ -53,19 +53,26 @@ public class OperationsPanel extends JPanel {
         });
 
         depositButton.addActionListener(e -> {
-            JOptionPane.showMessageDialog(this,"存款");
+//            JOptionPane.showMessageDialog(this,"存款");
+            mainApp.getTransactionPanel().setTransactionType("deposit");
+            mainApp.showPanel("Transactions");
         });
 
         withdrawButton.addActionListener(e -> {
-            JOptionPane.showMessageDialog(this,"取款");
+//            JOptionPane.showMessageDialog(this,"取款");
+            mainApp.getTransactionPanel().setTransactionType("withdraw");
+            mainApp.showPanel("Transactions");
         });
 
         changePasswordButton.addActionListener(e -> {
-            JOptionPane.showMessageDialog(this,"修改密码");
+//            JOptionPane.showMessageDialog(this,"修改密码");
+            mainApp.showPanel("ChangePassword");
         });
 
         logoutButton.addActionListener(e -> {
             JOptionPane.showMessageDialog(this,"退出");
+            mainApp.setLoggedInUser(null);
+            mainApp.showPanel("Welcome");
         });
     }
 

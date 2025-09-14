@@ -4,9 +4,9 @@ import java.sql.*;
 
 
 public class DatabaseManager {
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/bank_db?useSSL=false&serverTimezone=UTC";
-    private static final String USER = "bank_user";
-    private static String PASS = "123456";
+    private static final String DB_URL = "jdbc:mysql://48.210.84.122:3306/bank_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true";
+    private static final String USER = "bank_app_user";
+    private static String PASS = "Bank_app_p@ssw0rd!2025";
 
     private Connection connect(){
         try{
@@ -107,6 +107,45 @@ public class DatabaseManager {
             System.err.println(e.getMessage()+"5");
         }
         return -1;
+    }
+
+    public boolean updateBalance(String username, double newBalance){
+        if(newBalance < 0){
+            return false;
+        }
+        String sql = "UPDATE users SET balance = ? WHERE username = ?";
+        try(Connection conn = this.connect();PreparedStatement pstmt = conn.prepareStatement(sql) ){
+            if(conn == null){
+                return false;
+            }
+            pstmt.setDouble(1,newBalance);
+            pstmt.setString(2,username);
+
+            int affectRows = pstmt.executeUpdate();
+            return (affectRows > 0);
+        }catch (SQLException e){
+            e.printStackTrace();
+            System.err.println(e.getMessage()+"6");
+            return false;
+        }
+    }
+
+    public boolean updatePassword(String username,String newPassword){
+        String sql = "UPDATE users SET password_hash = ? WHERE username = ?";
+        try(Connection conn = this.connect();PreparedStatement pstmt = conn.prepareStatement(sql)){
+            if(conn == null){
+                return false;
+            }
+            String newPasswordHash = BCrypt.hashpw(newPassword,BCrypt.gensalt());
+            pstmt.setString(1,newPasswordHash);
+            pstmt.setString(2,username);
+            int affectRows = pstmt.executeUpdate();
+            return (affectRows > 0);
+        }catch (SQLException e){
+            e.printStackTrace();
+            System.err.println(e.getMessage()+"7");
+            return false;
+        }
     }
 
 }
