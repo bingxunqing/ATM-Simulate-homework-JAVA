@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="study:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/study_jar</output-path>
+    <root id="archive" name="study.jar">
+      <element id="module-output" name="study" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/mysql-connector-j-9.4.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jbcrypt-0.4.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

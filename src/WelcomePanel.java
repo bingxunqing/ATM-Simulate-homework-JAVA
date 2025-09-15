@@ -19,6 +19,7 @@ public class WelcomePanel extends JPanel {
         loginButton.setPreferredSize(buttonSize);
 
         createButton.addActionListener(e -> {
+            mainApp.showPanel("CreateAccount");
 //            JOptionPane.showMessageDialog(this,"正在努力跳转到创建账户页面噢");
         });
 

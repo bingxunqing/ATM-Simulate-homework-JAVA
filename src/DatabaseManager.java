@@ -2,7 +2,6 @@ import  org.mindrot.jbcrypt.BCrypt;
 import javax.sql.*;
 import java.sql.*;
 
-
 public class DatabaseManager {
     private static final String DB_URL = "jdbc:mysql://48.210.84.122:3306/bank_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true";
     private static final String USER = "bank_app_user";
